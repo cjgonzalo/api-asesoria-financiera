@@ -1,0 +1,32 @@
+{
+  "name": "api-asesoria-financiera",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p .",
+    "start": "node dist/index.js",
+    "dev": "nodemon --watch src --ext ts --exec \"ts-node src/index.ts\""
+  },
+  "keywords": [],
+  "author": "Casanova Gonzalo",
+  "license": "ISC",
+  "description": "API designed for finantial advisory",
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.16.3",
+    "typeorm": "^0.3.28",
+    "zod": "^4.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "nodemon": "^3.1.11",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.0"
+  }
+}
