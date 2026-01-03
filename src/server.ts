@@ -1,6 +1,7 @@
 import express, { Express } from 'express';
 import { errorMiddleware } from './middlewares/error.middleware';
 import { connectToPostgre } from './db/db-connection';
+import UserRouter from "./modules/users/presentation/routes"
 
 class Server {
   private port: number;
@@ -21,6 +22,7 @@ class Server {
 
   private setMiddlewares() {
     this.app.use(express.json())
+    this.app.use(UserRouter)
     this.app.use(errorMiddleware)
   }
 
