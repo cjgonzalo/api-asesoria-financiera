@@ -1,5 +1,7 @@
 import { DataSource } from "typeorm";
 import { UserEntity } from "../modules/users/infra/entities/UserEntity";
+import { DollarPriceEntity } from "../modules/market/dollar/infra/entities/DollarPricesEntity";
+import { DollarHouseEntity } from "../modules/market/dollar/infra/entities/DollarHousesEntity";
 
 let dataSource: DataSource | null = null;
 let initPromise: Promise<DataSource> | null = null;
@@ -10,7 +12,11 @@ const createDataSource = () => {
     type: "postgres" as const,
     logging: false,
     synchronize: false,
-    entities: [UserEntity],
+    entities: [
+      UserEntity,
+      DollarPriceEntity,
+      DollarHouseEntity
+    ],
   };
 
   if (url && url.trim().length > 0) {
