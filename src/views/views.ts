@@ -3,9 +3,9 @@ import { CustomError } from "../errors/CustomError"
 import { INTERNAL_SERVER_ERROR } from "../errors/ServerErrors"
 
 type SuccessResponse<T> = {
-  data: T
-  message: string
-  code: number
+  data?: T
+  message?: string
+  code?: number
 }
 
 type ErrorResponse = {
@@ -17,7 +17,7 @@ export const success = (res: Response, {
   message,
   code
 }: SuccessResponse<any>) => {
-  return res.status(code).json({ ...data, message })
+  return res.status(code || 200).json({ data, message })
 }
 
 export const errorView = (res: Response, { error }: ErrorResponse) => {
