@@ -1,5 +1,5 @@
 import { PgUserRepository } from "../../infra/repository/users.repository";
-import {NonIdUser, UserRepository, UserUseCase } from "../../interfaces/users.interfaces";
+import { NonIdUser, UserRepository, UserUseCase } from "../../interfaces/users.interfaces";
 import { randomUUID, hash } from 'crypto'
 
 export class UserCreate implements UserUseCase {
