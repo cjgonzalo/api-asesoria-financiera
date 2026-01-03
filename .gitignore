@@ -67,7 +67,7 @@ coverage-final.json
 docker-compose.override.yml
 
 # Lockfiles (uncomment if you want to track lockfiles)
-# package-lock.json
+package-lock.json
 # yarn.lock
 # pnpm-lock.yaml
 
