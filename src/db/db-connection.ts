@@ -1,4 +1,5 @@
 import { DataSource } from "typeorm";
+import { UserEntity } from "../modules/users/infra/entities/UserEntity";
 
 let dataSource: DataSource | null = null;
 let initPromise: Promise<DataSource> | null = null;
@@ -9,7 +10,7 @@ const createDataSource = () => {
     type: "postgres" as const,
     logging: false,
     synchronize: false,
-    entities: [],
+    entities: [UserEntity],
   };
 
   if (url && url.trim().length > 0) {
@@ -48,3 +49,5 @@ export const disconnectFromPostgre = async () => {
   dataSource = null;
   initPromise = null;
 };
+
+export const getDataSource = () => dataSource
