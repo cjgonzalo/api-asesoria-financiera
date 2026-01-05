@@ -5,7 +5,7 @@ import { connectToPostgre } from './db/db-connection';
 
 // Routers
 import UserRouter from "./modules/users/presentation/routes"
-import DollarRouter from "./modules/market/dollar/presentation/routes"
+import DollarRouter from "./modules/market/instruments/dollar/presentation/routes"
 
 class Server {
   private port: number;
