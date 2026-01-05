@@ -1,7 +1,8 @@
-import { Repository } from "typeorm"
+import { In, Repository } from "typeorm"
 import { getDataSource } from "../../../../../../db/db-connection"
 import { DollarPrice, DollarRepository } from "../../interfaces/DollarInterfaces"
 import { DollarPriceEntity } from "../entities/DollarPricesEntity"
+import { DollarHouseEntity } from "../entities/DollarHousesEntity"
 import { UUID } from "crypto"
 
 export class PgDollarRepository implements DollarRepository {
@@ -38,7 +39,21 @@ export class PgDollarRepository implements DollarRepository {
     })
   }
 
-  async savePrice(dollar: DollarPrice): Promise<void> {
-    await this.dollarRepo.insert(dollar)
+  async savePrices(pricesByHouse: DollarPrice[]): Promise<void> {
+    const houseRepo = getDataSource()!.getRepository(DollarHouseEntity)
+    const houses = await houseRepo.find({
+      where: { house: In(pricesByHouse.map(({ house }) => house )) }
+    })
+
+    const houseIdByName = new Map(houses.map((house) => [house.house, house.id]))
+
+    const pricesToInsert = pricesByHouse.map(p => ({
+      ...p,
+      house: houseIdByName.get(p.house)
+    }))
+
+    const conflictPaths = ["house", "date"]
+
+    await this.dollarRepo.upsert(pricesToInsert, conflictPaths)
   }
 }
