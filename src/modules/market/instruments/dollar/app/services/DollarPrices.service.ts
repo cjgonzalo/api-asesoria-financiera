@@ -1,7 +1,6 @@
 import { UUID } from "crypto"
 import { FindCurrentPrices } from "../usecases/FindCurrentPrices"
 import { FindPricesByHouse } from "../usecases/FindPricesByHouse"
-import { DollarPrice } from "../../interfaces/DollarInterfaces"
 import { SaveDollarPrice } from "../usecases/SaveDollarPrice"
 
 
