@@ -6,6 +6,7 @@ import { connectToPostgre } from './db/db-connection';
 // Routers
 import UserRouter from "./modules/users/presentation/routes"
 import DollarRouter from "./modules/market/instruments/dollar/presentation/routes"
+import IndicatorsRouter from "./modules/market/indicators/presentation/routes"
 
 class Server {
   private port: number;
@@ -30,6 +31,7 @@ class Server {
     // App routes
     this.app.use(UserRouter)
     this.app.use(DollarRouter)
+    this.app.use(IndicatorsRouter)
     
     // Error handlers
     this.app.use(notFoundMiddleware)
