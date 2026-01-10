@@ -1,7 +1,7 @@
 import { CustomError } from "../../../../../../errors/CustomError";
 import { PgIndicatorRepository } from "../../infra/repository/IndicatorRepository";
 import { IndicatorObservation, IndicatorRepository, IndicatorUseCase } from "../../interfaces/IndicatorInterfaces";
-import { INDICATOR_NOT_FOUND } from "../errors/IndicatorErrors";
+import { OBSERVATIONS_NOT_FOUND } from "../errors/IndicatorErrors";
 
 export class FindAllObservations implements IndicatorUseCase {
   private readonly repo: IndicatorRepository
@@ -14,7 +14,7 @@ export class FindAllObservations implements IndicatorUseCase {
     const observations = await this.repo.findAllObservations()
     
     if(!observations.length) {
-      throw new CustomError(INDICATOR_NOT_FOUND)
+      throw new CustomError(OBSERVATIONS_NOT_FOUND)
     }
 
     return observations 
