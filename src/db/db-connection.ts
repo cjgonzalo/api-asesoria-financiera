@@ -2,6 +2,8 @@ import { DataSource } from "typeorm";
 import { UserEntity } from "../modules/users/infra/entities/UserEntity";
 import { DollarPriceEntity } from "../modules/market/instruments/dollar/infra/entities/DollarPricesEntity";
 import { DollarHouseEntity } from "../modules/market/instruments/dollar/infra/entities/DollarHousesEntity";
+import { IndicatorEntity } from "../modules/market/indicators/shared/infra/entities/IndicatorEntity";
+import { IndicatorObservationEntity } from "../modules/market/indicators/shared/infra/entities/IndicatorObservationEntity";
 
 let dataSource: DataSource | null = null;
 let initPromise: Promise<DataSource> | null = null;
@@ -15,7 +17,9 @@ const createDataSource = () => {
     entities: [
       UserEntity,
       DollarPriceEntity,
-      DollarHouseEntity
+      DollarHouseEntity,
+      IndicatorEntity,
+      IndicatorObservationEntity
     ],
   };
 
