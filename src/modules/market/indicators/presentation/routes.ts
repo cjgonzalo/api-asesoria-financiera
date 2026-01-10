@@ -3,11 +3,11 @@ import IndicatorController from "./controllers/IndicatorController"
 
 const indicatorsRouter = Router()
 
-indicatorsRouter.get("/indicators", IndicatorController.getAllIndicators)
+indicatorsRouter.get("/", IndicatorController.getAllIndicators)
 
-indicatorsRouter.get("/indicators/observations", IndicatorController.getAllObservations)
-indicatorsRouter.get("/indicators/observations{/:id}", IndicatorController.getObservationsById)
+indicatorsRouter.get("/observations", IndicatorController.getAllObservations)
+indicatorsRouter.get("/observations{/:id}", IndicatorController.getObservationsById)
 
-indicatorsRouter.get("/indicators{/:indicatorName}", IndicatorController.getIndicatorByName)
+indicatorsRouter.get("{/:indicatorName}", IndicatorController.getIndicatorByName)
 
 export default indicatorsRouter

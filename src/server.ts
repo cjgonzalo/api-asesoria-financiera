@@ -2,11 +2,9 @@ import express, { Express } from 'express';
 import { errorMiddleware } from './middlewares/error.middleware';
 import { notFoundMiddleware } from './middlewares/not-found.middleware';
 import { connectToPostgre } from './db/db-connection';
-
-// Routers
-import UserRouter from "./modules/users/presentation/routes"
-import DollarRouter from "./modules/market/instruments/dollar/presentation/routes"
-import IndicatorsRouter from "./modules/market/indicators/presentation/routes"
+import { setUpModuleRouters } from './helpers/server.helper';
+import morgan from "morgan"
+import Config from "./config/config"
 
 class Server {
   private port: number;
@@ -27,12 +25,18 @@ class Server {
 
   private setMiddlewares() {
     this.app.use(express.json())
+
+    this.app.use(morgan("dev"))
     
     // App routes
-    this.app.use(UserRouter)
-    this.app.use(DollarRouter)
-    this.app.use(IndicatorsRouter)
-    
+    setUpModuleRouters()
+      .forEach(module => {
+        this.app.use(
+          `${Config.routesPrefix}/${module.moduleName}`,
+          module.router.default
+        )
+      })    
+
     // Error handlers
     this.app.use(notFoundMiddleware)
     this.app.use(errorMiddleware)
