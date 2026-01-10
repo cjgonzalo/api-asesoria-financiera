@@ -36,7 +36,7 @@ export class PgIndicatorRepository implements IndicatorRepository {
     })
   }
 
-  async saveObservations(indicators: IndicatorObservation[]): Promise<void> {
+  async saveLatestObservations(indicators: IndicatorObservation[]): Promise<void> {
     if (indicators.length) {
       await this.obsRepo.upsert(indicators, ["indicator_id"])
     }
