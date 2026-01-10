@@ -1,22 +1,22 @@
-import { CustomError } from "../../../../../../errors/CustomError";
+import { CustomError } from "../../../../../errors/CustomError";
 import { PgIndicatorRepository } from "../../infra/repository/IndicatorRepository";
 import { Indicator, IndicatorRepository, IndicatorUseCase } from "../../interfaces/IndicatorInterfaces";
 import { INDICATOR_NOT_FOUND } from "../errors/IndicatorErrors";
 
-export class FindAllIndicators implements IndicatorUseCase {
+export class FindIndicatorByName implements IndicatorUseCase {
   private readonly repo: IndicatorRepository
 
   constructor() {
     this.repo = new PgIndicatorRepository()
   }
 
-  async exec(): Promise<Indicator[]> {
-    const indicators = await this.repo.findAllIndicators()
+  async exec(name: string): Promise<Indicator> {
+    const indicator = await this.repo.findIndicatorByName(name)
     
-    if(!indicators.length) {
+    if(!indicator) {
       throw new CustomError(INDICATOR_NOT_FOUND)
     }
 
-    return indicators 
+    return indicator 
   }
 }

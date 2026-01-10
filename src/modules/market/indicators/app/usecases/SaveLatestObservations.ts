@@ -1,4 +1,4 @@
-import { CustomError } from "../../../../../../errors/CustomError";
+import { CustomError } from "../../../../../errors/CustomError";
 import { IndicatorAdapter } from "../../adapters/IndicatorAdapter";
 import { PgIndicatorRepository } from "../../infra/repository/IndicatorRepository";
 import { SAVE_OBSERVATION_ERROR } from "../errors/IndicatorErrors";

@@ -1,5 +1,5 @@
 import { Repository } from "typeorm";
-import { getDataSource } from "../../../../../../db/db-connection";
+import { getDataSource } from "../../../../../db/db-connection";
 import { IndicatorEntity } from "../entities/IndicatorEntity";
 import { IndicatorObservationEntity } from "../entities/IndicatorObservationEntity";
 import { Indicator, IndicatorObservation, IndicatorRepository } from "../../interfaces/IndicatorInterfaces";

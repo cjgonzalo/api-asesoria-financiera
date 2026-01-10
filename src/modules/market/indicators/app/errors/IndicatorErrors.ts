@@ -1,4 +1,4 @@
-import { HttpError } from "../../../../../../errors/CustomError";
+import { HttpError } from "../../../../../errors/CustomError";
 
 export const INDICATOR_NOT_FOUND: HttpError = {
   httpCode: 400,

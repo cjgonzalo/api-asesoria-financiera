@@ -1,6 +1,6 @@
 import "dotenv/config"
 import { getDataSource, connectToPostgre } from "../../db/db-connection"
-import { IndicatorService } from "../../modules/market/indicators/shared/app/services/IndicatorService"
+import { IndicatorService } from "../../modules/market/indicators/app/services/IndicatorService"
 
 const fetchAndInsertObservations = async () => {
   if(!getDataSource()) {
