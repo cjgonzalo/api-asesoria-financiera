@@ -3,7 +3,7 @@ import { PgIndicatorRepository } from "../../infra/repository/IndicatorRepositor
 import { IndicatorObservation, IndicatorRepository, IndicatorUseCase } from "../../interfaces/IndicatorInterfaces";
 import { SAVE_OBSERVATION_ERROR } from "../errors/IndicatorErrors";
 
-export class SaveObservation implements IndicatorUseCase {
+export class SaveObservations implements IndicatorUseCase {
   private readonly repo: IndicatorRepository
 
   constructor() {
