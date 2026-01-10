@@ -1,10 +1,9 @@
-import { IndicatorObservation } from "../../interfaces/IndicatorInterfaces"
 import { FindAllIndicators } from "../usecases/FindAllIndicators"
 import { FindAllObservations } from "../usecases/FindAllObservations"
 import { FindIndicatorById } from "../usecases/FindIndicatorById"
 import { FindIndicatorByName } from "../usecases/FindIndicatorByName"
 import { FindObservationsById } from "../usecases/FindObservationsById"
-import { SaveObservations } from "../usecases/SaveObservations"
+import { SaveLatestObservations } from "../usecases/SaveLatestObservations"
 
 export const IndicatorService = {
   async getAllIndicators() {
@@ -27,7 +26,7 @@ export const IndicatorService = {
     return await new FindObservationsById().exec(id)
   },
 
-  async saveObservations(obs: IndicatorObservation[]) {
-    return await new SaveObservations().exec(obs)
+  async saveLatestObservations() {
+    return await new SaveLatestObservations().exec()
   },
 }
