@@ -3,7 +3,6 @@ import { getDataSource } from "../../../../../../db/db-connection"
 import { DollarPrice, DollarRepository } from "../../interfaces/DollarInterfaces"
 import { DollarPriceEntity } from "../entities/DollarPricesEntity"
 import { DollarHouseEntity } from "../entities/DollarHousesEntity"
-import { UUID } from "crypto"
 
 export class PgDollarRepository implements DollarRepository {
   private readonly dollarRepo: Repository<DollarPriceEntity>
@@ -31,7 +30,7 @@ export class PgDollarRepository implements DollarRepository {
       .getMany()
   }
 
-  async findPricesByHouse(house: UUID): Promise<DollarPrice[]> {
+  async findPricesByHouse(house: number): Promise<DollarPrice[]> {
     return await this.dollarRepo.find({
       where: { house },
       relations: { dollarHouse: true },
@@ -49,7 +48,7 @@ export class PgDollarRepository implements DollarRepository {
 
     const pricesToInsert = pricesByHouse.map(p => ({
       ...p,
-      house: houseIdByName.get(p.house)
+      house: houseIdByName.get(String(p.house))
     }))
 
     const conflictPaths = ["house", "date"]

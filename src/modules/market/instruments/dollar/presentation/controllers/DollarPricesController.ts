@@ -1,36 +1,40 @@
 import { Request, Response, NextFunction } from "express";
 import { DollarPricesService } from "../../app/services/DollarPrices.service";
 import { success } from "../../../../../../views/views";
-import { UUID } from "crypto";
 import { CustomError } from "../../../../../../errors/CustomError";
-import { isValidUUID } from "../validators/DollarValidators";
+import { isValidInstrumentId } from "../validators/DollarValidators";
 
 class DollarPricesController {
-  async findCurrentPrices(_req: Request, res: Response, next: NextFunction) {
+  async findCurrentPrices(req: Request, res: Response, next: NextFunction) {
     try {
-      const currentPrices = await DollarPricesService.findCurrentPrices()
+      const { instrumentId } = req.params
+      if(!isValidInstrumentId(instrumentId)) {
+        throw new CustomError({ httpCode: 400, message: "Invalid instrument id" })
+      }
+
+      const currentPrices = await DollarPricesService.findCurrentPrices(instrumentId)
 
       return success(res, {
         data: currentPrices,
-        message: "Dollar current prices"
+        message: "Instrument current prices"
       })
     } catch(error) {
       next(error)
     }
   }
 
-  async findByHouse(req: Request, res: Response, next: NextFunction) {
+  async findByInstrument(req: Request, res: Response, next: NextFunction) {
     try {
-      const { house } = req.params
-      if(!isValidUUID(house)) {
-        throw new CustomError({ httpCode: 400, message: "Invalid UUID" })
+      const { instrumentId } = req.params
+      if(!isValidInstrumentId(instrumentId)) {
+        throw new CustomError({ httpCode: 400, message: "Invalid instrument id" })
       }
       
-      const pricesByHouse = await DollarPricesService.findPircesByHouse(house.toString().toUpperCase() as UUID)
+      const pricesByInstrument = await DollarPricesService.findPricesByInstrument(instrumentId)
 
       return success(res, {
-        data: pricesByHouse,
-        message: `Dollar prices for house ${house}`
+        data: pricesByInstrument,
+        message: `Instrument prices for ${instrumentId}`
       })
     } catch(error) {
       next(error)

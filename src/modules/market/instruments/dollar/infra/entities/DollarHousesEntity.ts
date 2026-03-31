@@ -3,12 +3,12 @@ import { DollarPriceEntity } from "./DollarPricesEntity";
 
 @Entity({ name: "dollar_houses" })
 export class DollarHouseEntity {
-  @PrimaryGeneratedColumn("uuid")
-  id: string
+  @PrimaryGeneratedColumn("increment", { type: "smallint" })
+  id: number
 
-  @Column({ type: "varchar", length: 20 })
+  @Column({ type: "varchar", length: 10 })
   house: string
 
-  @OneToMany(() => DollarPriceEntity, (p) => p.house)
+  @OneToMany(() => DollarPriceEntity, (p) => p.dollarHouse)
   dollarPrices: DollarPriceEntity[];
 }

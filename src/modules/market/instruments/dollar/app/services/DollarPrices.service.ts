@@ -1,16 +1,14 @@
-import { UUID } from "crypto"
-import { FindCurrentPrices } from "../usecases/FindCurrentPrices"
-import { FindPricesByHouse } from "../usecases/FindPricesByHouse"
+import { InstrumentPricesService } from "../../../shared/app/services/InstrumentPrices.service"
 import { SaveDollarPrice } from "../usecases/SaveDollarPrice"
 
 
 export const DollarPricesService = {
-  async findCurrentPrices() {
-    return await new FindCurrentPrices().exec()
+  async findCurrentPrices(instrumentId: string) {
+    return await InstrumentPricesService.findCurrentPrices(instrumentId)
   },
 
-  async findPircesByHouse(house: UUID) {
-    return await new FindPricesByHouse().exec(house)
+  async findPricesByInstrument(instrumentId: string) {
+    return await InstrumentPricesService.findPricesByInstrument(instrumentId)
   },
 
   async saveCurrentPrices() {

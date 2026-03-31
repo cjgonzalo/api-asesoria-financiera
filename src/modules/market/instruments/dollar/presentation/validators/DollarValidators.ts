@@ -1,3 +1,12 @@
 import { z } from "zod"
 
-export const isValidUUID = (s: string) => z.uuid(s).safeParse(s)?.error ? false : true
+export const isValidInstrumentId = (value: string) =>
+  z
+    .coerce
+    .number()
+    .int()
+    .min(1)
+    .safeParse(value)
+    ?.error
+    ? false
+    : true

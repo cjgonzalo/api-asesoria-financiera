@@ -3,7 +3,7 @@ import DollarPricesController from "./controllers/DollarPricesController";
 
 const router = Router()
 
-router.get("/dollar/current", DollarPricesController.findCurrentPrices)
-router.get("/dollar{/:house}", DollarPricesController.findByHouse)
+router.get("/dollar/:instrumentId/current", DollarPricesController.findCurrentPrices)
+router.get("/dollar/:instrumentId", DollarPricesController.findByInstrument)
 
 export default router

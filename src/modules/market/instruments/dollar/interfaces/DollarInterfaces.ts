@@ -1,12 +1,10 @@
-import { UUID } from "crypto"
-
 export interface DollarHouse {
-  id: string
+  id: number
   house: string
 }
 
 export interface DollarPrice {
-  house: string
+  house: string | number
   date: Date
   bidPrice: number
   askPrice: number
@@ -14,14 +12,14 @@ export interface DollarPrice {
 
 export interface DollarRepository {
   findCurrentPrices(): Promise<DollarPrice[]>
-  findPricesByHouse(house: string): Promise<DollarPrice[]>
+  findPricesByHouse(house: number): Promise<DollarPrice[]>
   savePrices(dollar: DollarPrice[]): Promise<void>
 }
 
 export interface DollarUseCase {
   exec(param:
     DollarPrice |
-    UUID |
+    number |
     null
   ): Promise<DollarPrice | DollarPrice[] | void>
 }

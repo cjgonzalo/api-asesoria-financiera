@@ -4,8 +4,8 @@ import { DollarPrice } from "../../interfaces/DollarInterfaces"
 
 @Entity({ name: "dollar_prices" })
 export class DollarPriceEntity implements DollarPrice {
-  @PrimaryColumn("uuid", { name: "house_id" })
-  house: string
+  @PrimaryColumn({ type: "smallint", name: "house_id" })
+  house: number
 
   @ManyToOne(
     () => DollarHouseEntity,
