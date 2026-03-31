@@ -1,0 +1,20 @@
+meta {
+  name: findCurrentMetrics
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{protocol}}://{{url}}:{{port}}/api/{{apiVersion}}/cauciones/cauciones/:instrumentId/current
+  body: none
+  auth: inherit
+}
+
+params:path {
+  instrumentId: {{caucionInstrumentId}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,20 @@
+meta {
+  name: getIndicatorByName
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{protocol}}://{{url}}:{{port}}/api/{{apiVersion}}/indicators/:indicatorName
+  body: none
+  auth: inherit
+}
+
+params:path {
+  indicatorName: inflacion
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

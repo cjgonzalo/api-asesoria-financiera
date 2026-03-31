@@ -1,0 +1,20 @@
+meta {
+  name: findPrices
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{protocol}}://{{url}}:{{port}}/api/{{apiVersion}}/cedears/cedears/:instrumentId/prices
+  body: none
+  auth: inherit
+}
+
+params:path {
+  instrumentId: {{cedearInstrumentId}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

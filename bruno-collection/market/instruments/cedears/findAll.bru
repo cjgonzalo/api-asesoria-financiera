@@ -1,0 +1,16 @@
+meta {
+  name: findAll
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{url}}:{{port}}/api/{{apiVersion}}/cedears/cedears/
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

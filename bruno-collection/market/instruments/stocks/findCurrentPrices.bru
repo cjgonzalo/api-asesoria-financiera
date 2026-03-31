@@ -1,0 +1,20 @@
+meta {
+  name: findCurrentPrices
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{protocol}}://{{url}}:{{port}}/api/{{apiVersion}}/stocks/stocks/:instrumentId/current
+  body: none
+  auth: inherit
+}
+
+params:path {
+  instrumentId: {{stockInstrumentId}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

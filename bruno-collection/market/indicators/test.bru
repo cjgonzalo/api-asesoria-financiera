@@ -1,0 +1,15 @@
+meta {
+  name: test
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://api.argentinadatos.com/v1/finanzas/indices/inflacion
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

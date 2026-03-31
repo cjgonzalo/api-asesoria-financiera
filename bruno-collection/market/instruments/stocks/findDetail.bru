@@ -1,0 +1,20 @@
+meta {
+  name: findDetail
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{url}}:{{port}}/api/{{apiVersion}}/stocks/stocks/:instrumentId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  instrumentId: {{stockInstrumentId}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

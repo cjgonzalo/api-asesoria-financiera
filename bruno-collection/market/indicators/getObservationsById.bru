@@ -1,0 +1,20 @@
+meta {
+  name: getObservationsById
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{protocol}}://{{url}}:{{port}}/api/{{apiVersion}}/indicators/observations/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 8303f010-5845-467c-894e-bcee7235503f
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

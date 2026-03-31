@@ -1,0 +1,20 @@
+meta {
+  name: findById
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{url}}:{{port}}/api/{{apiVersion}}/users/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 11c952bc-2872-4a95-8a1f-0943d6c4e077
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

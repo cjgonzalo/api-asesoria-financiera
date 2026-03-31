@@ -1,0 +1,16 @@
+meta {
+  name: getAllObservations
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{protocol}}://{{url}}:{{port}}/api/{{apiVersion}}/indicators/observations
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
